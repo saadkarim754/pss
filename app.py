@@ -527,10 +527,3 @@ def register_event(event_id):
         return apology("Event not found", 404)
     event = event[0]
     return render_template('register_event.html', event=event, sports=sports)
-
-
-
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
