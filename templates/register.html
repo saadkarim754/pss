@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2>Register</h2>
+        <form action="/register" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="gender">Gender:</label>
+                <select name="gender" id="gender">
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Phone Number</label>
+                <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmation">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmation" name="confirmation" required>
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select class="form-control" id="department" name="department" required>
+                    <option value="Select">Select...</option>
+                    <option value="DCIS">Department of Computer and Information Sciences</option>
+                    <option value="DPhy">Department of Physics</option>
+                    <option value="DEE">Department of Electrical Engineering</option>
+                    <option value="DME">Department of Mechanical Engineering</option>
+                    <option value="DCHE">Department of Chemical Engineering</option>
+                    <option value="DMME">Department of Metallurgy and Materials Engineering</option>
+                    <option value="DChy">Department of Chemistry</option>
+                    <option value="DNE">Department of Nuclear Engineering</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="semester">Semester</label>
+                <select class="form-control" id="semester" name="semester" required>
+                    <option value="" disabled selected>Select...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="university_registration_number">University Registration Number</label>
+                <input type="text" class="form-control" id="university_registration_number" name="university_registration_number" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+{% endblock %}

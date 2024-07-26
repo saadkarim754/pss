@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="jumbotron text-center">
+        <h2>Welcome to</h2>
+        <h1>
+            {% if session.get("username") %}
+                PIEAS SPORTICS SOCIETY
+                <p class="text-red">{{ session.username }}</p>
+            {% else %}
+                PIEAS SPORTICS SOCIETY
+            {% endif %}
+        </h1>
+        <p>Your hub for sports events and activities at PIEAS.</p>
+        {% if session.get("username") %}
+            <a href="/create_event" class="btn btn-custom">Create Event</a>
+            <a href="/delete_event" class="btn btn-danger">Delete Event</a>
+        {% endif %}
+    </div>
+
+    <!-- Objectives Section -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Objectives</h2>
+                <p>
+                    Our primary goal is to promote sports and fitness among the students of PIEAS by organizing a variety of events and activities. We aim to foster a sense of community, encourage teamwork, and provide opportunities for students to engage in sports that they are passionate about. Through these events, we hope to enhance the overall student experience and contribute to a healthier and more active campus life.
+                </p>
+            </div>
+        </div>
+
+        <!-- Events Section -->
+        <div class="row">
+            <div class="col-12">
+                <h2>Upcoming Events</h2>
+            </div>
+            {% for event in events %}
+                <div class="col-md-4 mb-4">
+                    <div class="card event-card" style="border: 1px solid #ddd; border-radius: 5px;">
+                        {% if event.image %}
+                            <img src="{{ url_for('static', filename='uploads/' ~ event.image) }}" class="card-img-top" alt="{{ event.name }}">
+                        {% else %}
+                            <img src="{{ url_for('static', filename='images/default_event.jpg') }}" class="card-img-top" alt="Default Image">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ event.name }}</h5>
+                            <p class="card-text">{{ event.date }}</p>
+                            <a href="/event/{{ event.id }}" class="btn btn-custom">See Event Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
